@@ -1,6 +1,8 @@
 {
   "name": "v-simple-mapper",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "author": "Van nguyen ba tran",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
@@ -15,6 +17,21 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "simple mapper",
+    "mapper",
+    "auto mapper",
+    "decorators",
+    "decorators mapper"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nguyenbatranvan/v-mapper"
+  },
+  "bugs": {
+    "url": "https://github.com/nguyenbatranvan/v-mapper/issues"
+  },
+  "homepage": "https://github.com/nguyenbatranvan/v-mapper#readme",
   "scripts": {
     "public": "pnpm publish --access public",
     "build": "rslib build",
