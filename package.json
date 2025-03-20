@@ -16,6 +16,7 @@
     "dist"
   ],
   "scripts": {
+    "public": "pnpm publish --access public",
     "build": "rslib build",
     "dev": "rslib build --watch"
   },
