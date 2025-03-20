@@ -44,6 +44,9 @@ const newData = response.map(instanceUser.toReponse)
 }
 ```
 
+## Install
+`npm i v-simple-mapper`
+
 ## Usage
 
 #### `@Pick`
