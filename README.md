@@ -74,7 +74,7 @@ console.log(toResponse(a, Address))
 // output 
 {
     city:"sss"
-    street:"A"
+    street:"a"
 }
 ```
 
@@ -111,7 +111,7 @@ console.log(toResponse(a, Address))
 
 // output 
 {
-    city:"sss"
+    city:"A"
     street:"atoResponse"
 }
 
@@ -119,7 +119,7 @@ console.log(toRequest(a, Address))
 
 // output 
 {
-    city:"sss"
+    city:"A"
     street:"atoRequest"
 }
 ```
