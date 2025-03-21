@@ -4,13 +4,13 @@ import {
 	PICK_RESPONSE_METADATA_KEY,
 	TO_REQUEST_METADATA_KEY,
 	TO_RESPONSE_METADATA_KEY,
-	TRANSFORM_METADATA_KEY
+	TRANSFORM_METADATA_KEY,
 } from "./define-symbols";
 
 function transformData<T>(
 	data: any,
 	target: new () => T,
-	direction: "request" | "response"
+	direction: "request" | "response",
 ): T {
 	const result = new target();
 	const pickMetadataKey =
@@ -38,23 +38,23 @@ function transformData<T>(
 				const transformBothFn = Reflect.getMetadata(
 					TRANSFORM_METADATA_KEY,
 					result,
-					key
+					key,
 				);
 				const specificFn = Reflect.getMetadata(
 					transformMetadataKey,
 					result,
-					key
+					key,
 				);
 
 				if (transformBothFn && specificFn) {
 					console.warn(
-						`Field ${key} has both @Transform and @${direction === "request" ? "ToRequest" : "ToResponse"}, using @Transform`
+						`Field ${key} has both @Transform and @${direction === "request" ? "ToRequest" : "ToResponse"}, using @Transform`,
 					);
 				}
 
 				const transformFn = transformBothFn || specificFn;
 				if (transformFn) {
-					value = transformFn(value);
+					value = transformFn(value, data);
 				}
 			}
 
@@ -68,7 +68,7 @@ function transformData<T>(
 function transformArrayData<T>(
 	data: any[],
 	target: new () => T,
-	direction: "request" | "response"
+	direction: "request" | "response",
 ): T[] {
 	if (!Array.isArray(data)) {
 		throw new Error("Input must be an array");

@@ -1,0 +1,78 @@
+name: CI
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  lint:
+    name: run lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-repo
+      - run: pnpm run lint
+
+  typecheck:
+    name: run type check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-repo
+      - run: pnpm run typecheck
+
+  format:
+    name: run format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-repo
+      - run: pnpm run format
+
+  build:
+    name: run build lib
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-repo
+      - run: pnpm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: packages/libs/dist
+
+  test:
+    timeout-minutes: 60
+    needs: [ build ]
+    name: run unit test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-repo
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: packages/libs/dist
+          name: dist
+
+      - name: Check
+        run: pnpm run test
+
+#      - name: Run Test load multiple assets by React App
+#        run: npx turbo run e2e --filter=react
+#
+#      - name: Run Test load multiple assets by Astro App
+#        run: npx turbo run e2e --filter=astro
+#
+#      - name: Run Test load multiple assets by Vue3 App
+#        run: npx turbo run e2e --filter=vue3
+#      - uses: actions/upload-artifact@v4
+#        if: always()
+#        with:
+#          name: playwright-report
+#          path: playwright-report/
+#          retention-days: 30

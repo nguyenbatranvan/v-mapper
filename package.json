@@ -1,46 +1,51 @@
 {
-  "name": "v-simple-mapper",
-  "version": "0.0.2",
-  "author": "Van nguyen ba tran",
-  "license": "MIT",
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "simple mapper",
-    "mapper",
-    "auto mapper",
-    "decorators",
-    "decorators mapper"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nguyenbatranvan/v-mapper"
-  },
-  "bugs": {
-    "url": "https://github.com/nguyenbatranvan/v-mapper/issues"
-  },
-  "homepage": "https://github.com/nguyenbatranvan/v-mapper#readme",
-  "scripts": {
-    "public": "pnpm publish --access public",
-    "build": "rslib build",
-    "dev": "rslib build --watch"
-  },
-  "devDependencies": {
-    "reflect-metadata": "^0.2.2",
-    "@rslib/core": "^0.5.5",
-    "@types/node": "^22.8.1",
-    "typescript": "^5.8.2"
-  }
+	"name": "v-simple-mapper",
+	"version": "0.0.2",
+	"author": "Van nguyen ba tran",
+	"license": "MIT",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": ["dist"],
+	"keywords": [
+		"simple mapper",
+		"mapper",
+		"auto mapper",
+		"decorators",
+		"decorators mapper"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nguyenbatranvan/v-mapper"
+	},
+	"bugs": {
+		"url": "https://github.com/nguyenbatranvan/v-mapper/issues"
+	},
+	"homepage": "https://github.com/nguyenbatranvan/v-mapper#readme",
+	"scripts": {
+		"public": "pnpm publish --access public",
+		"build": "rslib build",
+		"format": "pnpm biome format --error-on-warnings ./",
+		"reformat": "pnpm format --write ./",
+		"lint": "pnpm biome lint --error-on-warnings ./",
+		"dev": "rslib build --watch",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@rslib/core": "^0.5.5",
+		"@types/node": "^22.8.1",
+		"reflect-metadata": "^0.2.2",
+		"typescript": "^5.8.2",
+		"vitest": "^3.0.9"
+	}
 }

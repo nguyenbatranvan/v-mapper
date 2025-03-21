@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import {
 	PICK_REQUEST_METADATA_KEY,
-	PICK_RESPONSE_METADATA_KEY
+	PICK_RESPONSE_METADATA_KEY,
 } from "@/libs/define-symbols";
 
 export const Pick = () => (target: any, propertyKey: string) => {
@@ -12,12 +12,12 @@ export const Pick = () => (target: any, propertyKey: string) => {
 	Reflect.defineMetadata(
 		PICK_REQUEST_METADATA_KEY,
 		[...pickedRequestFields, propertyKey],
-		target
+		target,
 	);
 	Reflect.defineMetadata(
 		PICK_RESPONSE_METADATA_KEY,
 		[...pickedResponseFields, propertyKey],
-		target
+		target,
 	);
 };
 export const PickRequest = () => (target: any, propertyKey: string) => {
@@ -26,7 +26,7 @@ export const PickRequest = () => (target: any, propertyKey: string) => {
 	Reflect.defineMetadata(
 		PICK_REQUEST_METADATA_KEY,
 		[...pickedFields, propertyKey],
-		target
+		target,
 	);
 };
 
@@ -36,6 +36,6 @@ export const PickResponse = () => (target: any, propertyKey: string) => {
 	Reflect.defineMetadata(
 		PICK_RESPONSE_METADATA_KEY,
 		[...pickedFields, propertyKey],
-		target
+		target,
 	);
 };
