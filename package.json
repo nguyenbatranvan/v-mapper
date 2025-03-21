@@ -1,6 +1,6 @@
 {
 	"name": "v-simple-mapper",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"author": "Van nguyen ba tran",
 	"license": "MIT",
 	"type": "module",
@@ -32,7 +32,7 @@
 	"homepage": "https://github.com/nguyenbatranvan/v-mapper#readme",
 	"scripts": {
 		"public": "pnpm publish --access public",
-		"build": "rslib build",
+		"build": "rm -rf dist && rslib build",
 		"format": "pnpm biome format --error-on-warnings ./",
 		"reformat": "pnpm format --write ./",
 		"lint": "pnpm biome lint --error-on-warnings ./",

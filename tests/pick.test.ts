@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { toResponse } from "@/libs";
 import { address, addressItems, AddressModel } from "../mocks/address-model";
 import { utilsMap } from "../mocks/utils-map";
+import { toResponse } from "@/libs";
 
 const mapFn = (item: AddressModel) => {
 	delete item.postalCode;
